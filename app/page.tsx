@@ -63,7 +63,7 @@ export default function Home() {
               />
             </div>
             <div className="text-center sm:text-left">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#0070bc]">
                 Bingo Solidari
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-gray-600">
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         ) : loading ? (
           <div className="text-center py-20">
-            <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-gray-900"></div>
+            <div className="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-[#0070bc]"></div>
             <p className="mt-3 text-sm text-gray-500">Carregant...</p>
           </div>
         ) : packs.length === 0 ? (
@@ -101,7 +101,7 @@ export default function Home() {
               <p className="text-sm text-gray-500 mb-6">Ves al panell d&apos;administració per afegir el primer pack</p>
               <Link
                 href="/admin"
-                className="inline-block bg-gray-900 hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                className="inline-block bg-[#0070bc] hover:bg-[#005a99] text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors"
               >
                 Anar a Administració
               </Link>
@@ -111,7 +111,7 @@ export default function Home() {
           <>
             <div className="mb-4 sm:mb-6">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
+                <h2 className="text-lg sm:text-xl font-semibold text-[#0070bc]">
                   Packs de Regals
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-500">
@@ -149,7 +149,7 @@ export default function Home() {
                     {/* Status Badge */}
                     <div className={`absolute top-2 right-2 px-2.5 py-1 rounded text-xs font-medium ${
                       pack.available
-                        ? 'bg-green-100 text-green-800'
+                        ? 'bg-[#70ae2e] text-white'
                         : 'bg-gray-100 text-gray-600'
                     }`}>
                       {pack.available ? 'Disponible' : 'Guanyat'}
@@ -158,7 +158,7 @@ export default function Home() {
 
                   {/* Content */}
                   <div className="p-3 sm:p-4">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">
+                    <h3 className="text-base sm:text-lg font-semibold text-[#70ae2e] mb-2 sm:mb-3">
                       {pack.name}
                     </h3>
                     <ul className="space-y-1 mb-2 sm:mb-3">
