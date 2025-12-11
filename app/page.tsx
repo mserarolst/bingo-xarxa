@@ -140,7 +140,7 @@ export default function Home() {
                       <img 
                         src={pack.imageUrl} 
                         alt={pack.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     ) : (
                       <div className="text-4xl text-gray-400">🎁</div>
@@ -158,10 +158,8 @@ export default function Home() {
 
                   {/* Content */}
                   <div className="p-3 sm:p-4">
-                    <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
-                      <span className="bg-gradient-to-r from-[#70ae2e]  to-[#0070bc] inline-block text-transparent bg-clip-text">
-                        {pack.name}
-                      </span>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3 bg-gradient-to-r from-[#70ae2e] to-[#0070bc] bg-clip-text text-transparent">
+                      {pack.name}
                     </h3>
                     <ul className="space-y-1 mb-2 sm:mb-3">
                       {pack.description.split(' • ').map((item, idx) => (
