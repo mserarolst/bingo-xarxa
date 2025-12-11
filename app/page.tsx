@@ -45,9 +45,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gray-50 pb-20">
+    <main className="min-h-screen bg-gradient-to-br from-[#0070bc]/10 via-gray-50 to-[#70ae2e]/10">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-transparent border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <div className="flex items-center gap-3 sm:gap-4">
