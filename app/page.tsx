@@ -45,7 +45,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0070bc]/10 via-gray-50 to-[#70ae2e]/10">
+    <main className="min-h-screen bg-gradient-to-br from-blue-100 via-gray-50 to-green-100" style={{backgroundImage: 'linear-gradient(to bottom right, rgba(0, 112, 188, 0.1), rgb(249, 250, 251), rgba(112, 174, 46, 0.1))'}}>
       {/* Header */}
       <div className="bg-transparent border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
