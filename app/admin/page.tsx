@@ -214,18 +214,30 @@ export default function AdminPage() {
             onClick={() => setShowForm(!showForm)}
             className="bg-gray-900 hover:bg-gray-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-colors w-full sm:w-auto"
           >
-            {showForm ? 'Cancel·lar' : '+ Afegir Pack'}
+            + Afegir Pack
           </button>
         )}
         </div>
 
-        {/* Form */}
+        {/* Modal Form */}
         {showForm && (
-          <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
-            <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-900">
-              {editingPack ? 'Editar Pack' : 'Nou Pack'}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="fixed inset-0 flex items-center justify-center z-50 p-4" style={{backgroundColor: '#00000091'}} onClick={resetForm}>
+            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+              <div className="sticky top-0 bg-white border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
+                <h2 className="text-base sm:text-lg font-semibold text-gray-900">
+                  {editingPack ? 'Editar Pack' : 'Nou Pack'}
+                </h2>
+                <button
+                  onClick={resetForm}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Nom del Pack *
@@ -348,23 +360,24 @@ export default function AdminPage() {
                 </label>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 sticky bottom-0 bg-white border-t border-gray-200 -mx-4 sm:-mx-6 px-4 sm:px-6 py-4 mt-6">
                 <button
                   type="submit"
                   disabled={items.length === 0}
-                  className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed w-full sm:w-auto"
+                  className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed w-full sm:w-auto"
                 >
-                  {editingPack ? 'Actualitzar' : 'Crear'}
+                  {editingPack ? 'Actualitzar Pack' : 'Crear Pack'}
                 </button>
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-2 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto"
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-2.5 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto"
                 >
                   Cancel·lar
                 </button>
               </div>
             </form>
+            </div>
           </div>
         )}
 

@@ -1,15 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db, isConfigured } from '@/lib/firebase';
 import { Pack } from '@/types';
 import Link from 'next/link';
+import { toast } from 'sonner';
 
 export default function Home() {
   const [packs, setPacks] = useState<Pack[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const prevPacksRef = useRef<Pack[]>([]);
 
   useEffect(() => {
     if (!isConfigured || !db) {
@@ -28,6 +30,25 @@ export default function Home() {
           createdAt: doc.data().createdAt?.toDate() || new Date()
         })) as Pack[];
         
+        // Detectar packs que han canviat a "guanyat"
+        if (prevPacksRef.current.length > 0) {
+          packsData.forEach(pack => {
+            const prevPack = prevPacksRef.current.find(p => p.id === pack.id);
+            if (prevPack && prevPack.available && !pack.available) {
+              // El pack ha canviat de disponible a guanyat
+              toast.success(`Pack guanyat: ${pack.name}`, {
+                duration: 5000,
+                description: `Patrocinat per ${pack.sponsor}`,
+                icon: '🎉',
+                style: {
+                  fontSize: '20px',
+                },
+              });
+            }
+          });
+        }
+        
+        prevPacksRef.current = packsData;
         setPacks(packsData);
         setLoading(false);
       }, (err) => {
@@ -45,7 +66,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-100 via-gray-50 to-green-100" style={{backgroundImage: 'linear-gradient(to bottom right, rgba(0, 112, 188, 0.1), rgb(249, 250, 251), rgba(112, 174, 46, 0.1))'}}>
+    <main className="min-h-screen bg-custom-gradient">
       {/* Header */}
       <div className="bg-transparent border-b border-gray-200/50">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
@@ -122,9 +143,10 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {packs.map((pack) => (
-                <div
+                <Link
                   key={pack.id}
-                  className={`bg-white border rounded-lg overflow-hidden transition-all hover:shadow-md ${
+                  href={`/pack/${pack.id}`}
+                  className={`bg-white border rounded-lg overflow-hidden transition-all hover:shadow-md cursor-pointer ${
                     pack.available
                       ? 'border-gray-200'
                       : 'border-gray-200 opacity-50'
@@ -175,7 +197,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </>

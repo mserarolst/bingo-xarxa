@@ -25,6 +25,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Gradient de fons personalitzat */
+.bg-custom-gradient {
+  background: #f9fafb;
+  background: linear-gradient(135deg, rgba(0, 112, 188, 0.08) 0%, #f9fafb 50%, rgba(112, 174, 46, 0.08) 100%);
+}
+
 /* Amagar el logo de Next.js/Turbopack */
 #__next-build-watcher,
 nextjs-portal,

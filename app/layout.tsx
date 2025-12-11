@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'sonner';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,20 @@ export default function RootLayout({
   return (
     <html lang="ca">
       <body className={inter.className}>
+        <Toaster 
+          position="top-center" 
+          richColors 
+          toastOptions={{
+            style: {
+              fontSize: '18px',
+              padding: '20px',
+            },
+            classNames: {
+              title: 'text-lg font-semibold',
+              description: 'text-base',
+            },
+          }}
+        />
         {children}
       </body>
     </html>
