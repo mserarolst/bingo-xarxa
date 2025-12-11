@@ -158,8 +158,10 @@ export default function Home() {
 
                   {/* Content */}
                   <div className="p-3 sm:p-4">
-                    <h3 className="text-base sm:text-lg font-semibold text-[#70ae2e] mb-2 sm:mb-3">
-                      {pack.name}
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+                      <span className="bg-gradient-to-r from-[#70ae2e]  to-[#0070bc] inline-block text-transparent bg-clip-text">
+                        {pack.name}
+                      </span>
                     </h3>
                     <ul className="space-y-1 mb-2 sm:mb-3">
                       {pack.description.split(' • ').map((item, idx) => (
