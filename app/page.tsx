@@ -59,7 +59,7 @@ export default function Home() {
               <img 
                 src="/Marato-tv3-logo.jpg" 
                 alt="La Marató de TV3" 
-                className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain"
               />
             </div>
             <div className="text-center sm:text-left">
@@ -180,17 +180,6 @@ export default function Home() {
             </div>
           </>
         )}
-      </div>
-
-      {/* Admin Link */}
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
-        <Link
-          href="/admin"
-          className="bg-gray-900 hover:bg-gray-800 text-white rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg transition-colors flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium"
-        >
-          <span className="text-sm sm:text-base">⚙</span>
-          <span className="hidden sm:inline">Admin</span>
-        </Link>
       </div>
 
       {/* Footer */}
